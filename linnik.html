@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Линник</title>
+</head>
+<body class="linnik-page">
+    <header>
+    <h1>Линник</h1>
+    <a href="index.html" class="back-btn">↢ Назад</a>
+    </header>
+
+    <main>
+        <section class="covers photo-row">
+            <div class="photo-wrapper">
+            <a href="mz_1.html" class="photo">
+                <div class="photo-inner">
+                <img src="МЗ_1.jpg" alt="Обложка_МЗ_1">
+                </div>
+                <div class="album-name">
+                    <span class="title">Моднейший Завет Ч.1</span>
+                </div>
+            </a>
+            </div>
+            <div class="photo-wrapper">
+            <a href="mz_2.html" class="photo">
+                <div class="photo-inner">
+                <img src="МЗ2.jpg" alt="Обложка_МЗ_2">
+                </div>
+                <div class="album-name">
+                    <span class="title">Моднейший Завет Ч.2</span>
+                </div>
+            </a>
+            </div>
+        </section>
+
+        <section class="intro">
+            <h2>Сайт создан в учебных и демонстративных целях</h2>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© alyametery UCL 2026</p>
+    </footer>
+    <div class="ballz">
+        <svg width="400" height="400" viewBox="0 0 200 200">
+            <defs>
+                <path id="circlePath" d="M 100, 100 m -75, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0"/>
+            </defs>
+            <text font-size="33" fill="#ccc">
+                <textPath href="#circlePath" startOffset="50%" text-anchor="middle">
+                    alyametery UCL - alyametery UCL -
+                </textPath>
+            </text>
+        </svg>
+    </div>
+    <div class="global-player">
+    <div class="player-controls">
+        <button id="prev">◁</button>
+        <button id="next">▷</button>
+    </div>
+    <div class="player-info">
+        <span class="player-label">Сейчас играет:</span>
+        <span id="now-playing">Ничего</span>
+    </div>
+    <audio id="main-audio" controls></audio>
+</div>
+<script src="player.js"></script>
+</body>
+</html>

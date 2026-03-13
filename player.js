@@ -15,7 +15,7 @@
             player.play();
             currentIndex = idx;
             localStorage.setItem("currentIndex", currentIndex);
-            localStorage.setItem("currentTrack", src);
+            localStorage.setItem("currentTrack", audioSrc);
             localStorage.setItem("currentTitle", title);
             localStorage.setItem("isPaused", "false");
         });
@@ -38,7 +38,8 @@
         const savedTitle = localStorage.getItem("currentTitle");
         const savedTime = localStorage.getItem("currentTime");
         const wasPaused = localStorage.getItem("isPaused");
-        if(savedTrack){
+    });
+    if(savedTrack){
             player.src = savedTrack;
             nowPlaying.textContent = savedTitle;
             player.addEventListener("ended", ()=> {
@@ -55,8 +56,7 @@
                 player.play();
                 }
             }, {once: true});
-        }
-    });
+        };
     document.getElementById("next").onclick = () => {
         currentIndex++;
         if(currentIndex >= trackSources.length) currentIndex = 0;
@@ -87,7 +87,6 @@
             card.classList.toggle("active", idx === currentIndex);
         });
     }
-    currentIndex = idx;
     highlightCurrentTrack();
     window.addEventListener("DOMContentLoaded", () => {
         const albumInfo = document.querySelector(".album-info p");
@@ -95,10 +94,10 @@
         trackCards.forEach(card => {
             const audio = card.querySelector("audio");
             audio.addEventListener("loadedmetadata", () => {
-                totalDuration += audio.Duration;
+                totalDuration += audio.duration;
                 const minutes = Math.floor(totalDuration / 60);
                 const seconds = Math.floor(totalDuration % 60).toString().padStart(2, '0');
-                albumInfo.textContent = `${trackCards.lenght} треков - ${minutes}:${seconds} минут`;
+                albumInfo.textContent = `${trackCards.length} треков - ${minutes}:${seconds} минут`;
             });
         });
     });

@@ -10,10 +10,19 @@
             const audio = card.querySelector("audio");
             const audioSrc = card.querySelector("source").src;
             const title = card.querySelector(".track-title").textContent;
+            if (currentIndex === idx) {
+                if (player.paused) {
+                    player.play();
+                } else {
+                    player.pause();
+                }
+                return;
+            }
             player.src = audioSrc;
-            nowPlaying.textContent =title;
+            nowPlaying.textContent = title;
             player.play();
             currentIndex = idx;
+            highlightCurrentTrack();
             localStorage.setItem("currentIndex", currentIndex);
             localStorage.setItem("currentTrack", audioSrc);
             localStorage.setItem("currentTitle", title);
@@ -38,17 +47,19 @@
         const savedTitle = localStorage.getItem("currentTitle");
         const savedTime = localStorage.getItem("currentTime");
         const wasPaused = localStorage.getItem("isPaused");
-    });
-    if(savedTrack){
+           if(savedTrack){
             player.src = savedTrack;
             nowPlaying.textContent = savedTitle;
             player.addEventListener("ended", ()=> {
                 currentIndex++;
                 if (currentIndex >= trackSources.length) currentIndex = 0;
+                highlightCurrentTrack();
                 player.src = trackSources[currentIndex];
                 nowPlaying.textContent = trackCards[currentIndex].querySelector(".track-title").textContent;
                 player.play();
                 localStorage.setItem("currentIndex", currentIndex);
+                localStorage.setItem("currentTrack", trackSources[currentIndex]);
+                localStorage.setItem("currentTitle", nowPlaying.textContent);
             });
             player.addEventListener("loadedmetadata", () => {
                 if (savedTime) player.currentTime = Number(savedTime);
@@ -57,21 +68,29 @@
                 }
             }, {once: true});
         };
+    });
+
     document.getElementById("next").onclick = () => {
         currentIndex++;
         if(currentIndex >= trackSources.length) currentIndex = 0;
+        highlightCurrentTrack();
         player.src = trackSources[currentIndex];
         nowPlaying.textContent = trackCards[currentIndex].querySelector(".track-title").textContent;
         player.play();
         localStorage.setItem("currentIndex", currentIndex);
+        localStorage.setItem("currentTrack", trackSources[currentIndex]);
+        localStorage.setItem("currentTitle", nowPlaying.textContent);
     };
     document.getElementById("prev").onclick = () => {
         currentIndex--;
         if(currentIndex <0) currentIndex = trackSources.length - 1;
+        highlightCurrentTrack();
         player.src = trackSources[currentIndex];
         nowPlaying.textContent = trackCards[currentIndex].querySelector(".track-title").textContent;
         player.play();
         localStorage.setItem("currentIndex", currentIndex);
+        localStorage.setItem("currentTrack", trackSources[currentIndex]);
+        localStorage.setItem("currentTitle", nowPlaying.textContent);
     };
     player.addEventListener("timeupdate", () => {
         localStorage.setItem("currentTime", player.currentTime);

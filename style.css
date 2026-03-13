@@ -1,15 +1,15 @@
 :root {
     --color-main: #a670f1;
     --color-dark: #815b13;
-    --color-text-one: #a3906d;
-    --color-text-two: #000000;
+    --color-text: #a3906d;
+    --color-card: #a3906d;
 }
 body {
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
     color: white;
-    min-height: 100vh;
-    background: radial-gradient(circle at right, var(--color-main), var(--color-dark) 70%);
+    min-height: 90vh;
+    background: radial-gradient(circle at right, var(--color-main), var(--color-dark) 40%);
 
 }
 
@@ -26,16 +26,15 @@ body {
 }
 
 
-.covers.photo-row {
+.artists {
     display: flex;
     justify-content: center;
     gap: 30px;
     margin: 40px 0;
     flex-wrap: wrap;
-    
 }
 
-.covers.photo-row a {
+.artists a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,8 +42,8 @@ body {
     color: white;
 }
 
-.photo {
-    background: #1d162bd0;
+.avatar {
+    background: var(--color-card);
     padding: 20px;
     border-radius: 10px;
     width: 220px;
@@ -52,47 +51,43 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s;
     gap: 15px;
 }
-.photo-wrapper {
+.names {
     animation: fadeUp 0.3s ease forwards;
     opacity: 0;
 }
-.photo:hover {
+.avatar:hover {
     box-shadow: 0 15px 30px var(--color-main);
     transform: scale(1.05) translateY(-5px);
 }
-.photo img {
+.avatar img {
     width: 100%;
     border-radius: 10px;
 }
-
-.photo-wrapper:nth-child(1) {animation-delay: 0.1s;}
-.photo-wrapper:nth-child(2) {animation-delay: 0.15s;}
-.photo-wrapper:nth-child(3) {animation-delay: 0.2s;}
-.photo-wrapper:nth-child(4) {animation-delay: 0.25s;}
-
+.names:nth-child(1) {animation-delay: 0.1s;}
+.names:nth-child(2) {animation-delay: 0.15s;}
+.names:nth-child(3) {animation-delay: 0.2s;}
+.names:nth-child(4) {animation-delay: 0.25s;}
+.artist-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: var(--color-main);
+    font-weight: bold;
+}
 .album-name {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.album-name .artist {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-    color: #1d162bd0;
-    font-weight: bold;
-}
-
-.album-name .title {
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
-    color: #1d162bd0;
+    color: var(--color-main);
+    font-weight: bold;
 }
-
-.photo button {
+.avatar button {
     cursor: pointer;
 }
-
 .tracks {
     display: flex;
     flex-direction: column;
@@ -105,13 +100,54 @@ body {
     margin-bottom: 200px;
     
 }
-
+.covers.photo-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+.covers.photo-row a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+.photo-wrapper {
+    animation: fadeUp 0.3s ease forwards;
+    opacity: 0;
+}
+.photo-wrappers:nth-child(1) {animation-delay: 0.1s;}
+.photo-wrapper:nth-child(2) {animation-delay: 0.15s;}
+.photo-wrapper:nth-child(3) {animation-delay: 0.2s;}
+.photo-wrapper:nth-child(4) {animation-delay: 0.25s;}
+.photo {
+    background: var(--color-card);
+    padding: 20px;
+    border-radius: 10px;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s;
+    gap: 15px;
+}
+.photo:hover {
+    box-shadow: 0 15px 30px var(--color-main);
+    transform: scale(1.05) translateY(-5px);
+}
+.photo img {
+    width: 100%;
+    border-radius: 10px;
+}
+.photo button {
+    cursor: pointer;
+}
 .track-card {
     display: flex;
     flex: 1;
     align-items: center;
     gap: 15px;
-    background: #1e1e2f;
+    background: var(--color-card);
     padding: 10px 15px;
     border-radius: 10px;
     width: 100%;
@@ -123,6 +159,13 @@ body {
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
 }
+.track-card.active {
+    background: var(--color-card);
+    cursor: pointer;
+    color: var(--color-main);
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 10px 20px var(--color-main);
+}
 .track-wrapper {
     display: flex;
     align-items: center;
@@ -131,15 +174,10 @@ body {
     width: 100%;
     opacity: 0;
 }
-.track-card.active {
-    border: 2px solid var(--color-main);
-    background: #2a2a3d;
-}
-
 .track-card:hover {
     transform: scale(1.05) translateY(-5px);
     box-shadow: 0 10px 20px var(--color-main);
-    background: var(--color-dark);
+    background: var(--color-card);
 }
 .track-thumb {
     width: 50px;
@@ -155,12 +193,13 @@ body {
 }
 .track-title {
     font-weight: 400;
-    color: var(--color-main);
+    color: var(--color-text);
 }
 .track-duration {
     margin-left: 10px;
     font-weight: 400;
     text-align: right;
+    color: var(--color-text);
 }
 
 .track-card p {
@@ -172,9 +211,9 @@ body {
 .track-card button {
     margin-left: auto;
     padding: 8px 15px;
-    background: var(--color-main);
+    background: var(--color-dark);
     border: none;
-    color: white;
+    color: var(--color-text);
     border-radius: 8px;
     cursor: pointer;
 }
@@ -184,8 +223,9 @@ body {
     filter: brightness(0.7);
 }
 .play-btn:active {
-    background: var(--color-dark);
+    background: var(--color-text);
     transform: scale(0.95);
+    color: var(--color-dark);
 }
 .track-wrapper:nth-child(1) {animation-delay: 0.05s;}
 .track-wrapper:nth-child(2) {animation-delay: 0.1s;}
@@ -246,7 +286,7 @@ body::before {
     filter: blur(250px);
     top: -200px;
     left: -200px;
-    z-index: -2;
+    z-index: -1;
     animation: breathe 7s ease-in-out infinite;
 }
 
@@ -257,8 +297,8 @@ body::after {
     height: 600px;
     background: var(--color-main);
     filter: blur(200px);
-    bottom: -150px;
-    left: -100px;
+    bottom: -100px;
+    left: -50px;
     z-index: -1;
     opacity: 1;
     animation: breathe 7s ease-in-out infinite;
@@ -266,74 +306,159 @@ body::after {
 
 body.homepage {
     --color-main: #ad7fcc;
-    --color-dark: #b49714;
-    --color-text-one: #e4d9aba6;
-    --color-text-two: #a8a8a8;
+    --color-dark: #000000;
+    --color-text: #756c6c88;
+    --color-card: #33263b;
+}
+body.pharaoh-page {
+    --color-main: #3e8677;
+    --color-dark: #1d1c27;
+    --color-text: #252e55b0;
+    --color-card: #1e2b28;
+}
+body.linnik-page {
+    --color-main: #ffffffa6;
+    --color-dark: #000000;
+    --color-text: #6b6b6b;
+    --color-card: #242020;
+}
+body.lilos-page {
+    --color-main: #443344;
+    --color-dark: #857668;
+    --color-text: #9e937b6e;
+    --color-card: #5f554b;
 }
 body.album_10-13 {
     --color-main: #794a0d;
-    --color-dark: #b4aa9c;
-    --color-text-one: #28610291;
-    --color-text-two: #85650dd0;
+    --color-dark: #aa9981;
+    --color-text: #5e5a4ad8;
+    --color-card: #2b1c00;
 }
 body.album_MZ-1 {
-    --color-main: #681174;
-    --color-dark: #110e0d;
-    --color-text-one: #942e6dd2;
-    --color-text-two: #1a1814;
+    --color-main: #a01a64;
+    --color-dark: #000000;
+    --color-text: #ac1a3a;
+    --color-card: #2b0021;
 }
 body.album_MZ-2 {
-    --color-main: #5a5a5a;
+    --color-main: #d6c5c5;
     --color-dark: #000000;
-    --color-text-one: rgb(56, 55, 50);
-    --color-text-two: #40493d;
+    --color-text: #6b6b6b;
+    --color-card: #1b1919;
+}
+body.album_AY2 {
+    --color-main: #5e815b;
+    --color-dark: #000000;
+    --color-text: #99f18fa6;
+    --color-card: #0a1b00;
+}
+body.album_meagain {
+    --color-main: #56635e;
+    --color-dark: #000000;
+    --color-text: #ffffff9f;
+    --color-card: #001813;
 }
 h1 {
     font-family: 'Times New Roman', Times, serif;
     font-size: 32px;
-    -webkit-text-stroke: 1px var(--color-text-one);
+    -webkit-text-stroke: 1px var(--color-main);
     justify-content: center;
     display: flex;
     animation: titleReveal 0.3s ease forwards;
     opacity: 1;
 }
 body.homepage h1 {
-    background: linear-gradient(45deg, var(--color-main), var(--color-dark));
+    background: var(--color-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+body.pharaoh-page h1 {
+    background: var(--color-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+body.linnik-page h1 {
+    background: var(--color-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+body.lilos-page h1 {
+    background: var(--color-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 body.album_10-13 h1 {
-    background: linear-gradient(45deg, var(--color-text-two), #ffffff71);
+    background: var(--color-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 body.album_MZ-1 h1 {
-    background: linear-gradient(45deg, var(--color-text-one), var(--color-text-two));
+    background: var(--color-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 body.album_MZ-2 h1 {
-    background: linear-gradient(45deg, var(--color-text-one), white);
+    background: var(--color-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+body.album_AY2 h1 {
+    background: var(--color-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+body.album_meagain h1 {
+    background: var(--color-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+body.pharaoh-page::before {
+    background: var(--color-main);
+}
+body.pharaoh-page::after {
+    background: var(--color-main);
+}
+body.linnik-page::before {
+    background: var(--color-main);
+}
+body.linnik-page::after {
+    background: var(--color-main);
+}
+body.lilos-page::before {
+    background: var(--color-main);
+}
+body.lilos-page::after {
+    background: var(--color-main);
 }
 body.album_10-13::before {
     background: var(--color-main);
 }
 body.album_10-13::after {
-    background: var(--color-dark);
+    background: var(--color-main);
 }
 body.album_MZ-1::before {
     background: var(--color-main);
 }
 body.album_MZ-1::after {
-    background: var(--color-dark);
+    background: var(--color-main);
 }
 body.album_MZ-2::before {
     background: var(--color-main);
 }
 body.album_MZ-2::after {
-    background: var(--color-dark);
+    background: var(--color-main);
+}
+body.album_AY2::before {
+    background: var(--color-main);
+}
+body.album_AY2::after {
+    background: var(--color-main);
+}
+body.album_meagain::before {
+    background: var(--color-main);
+}
+body.album_meagain::after {
+    background: var(--color-main);
 }
 @keyframes fadeUp {
     from {
@@ -453,16 +578,18 @@ body.album_MZ-2::after {
 .album-info h3{
     margin: 5px 0;
     opacity: 1;
-    font-size: 28px;
+    font-size: 24px;
+    color: var(--color-text);
 }
 .album-info h4{
     margin: 5px 0;
     opacity: 1;
     font-size: 28px;
+    color: var(--color-text);
 }
 .album-info p{
     margin: 5px 0;
     opacity: 1;
     font-size: 18px;
-    color: var(--color-dark);
+    color: var(--color-text);
 }

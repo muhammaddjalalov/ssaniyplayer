@@ -19,6 +19,7 @@
                 return;
             }
             player.src = audioSrc;
+            progressBar.value = 0;
             nowPlaying.textContent = title;
             player.play();
             currentIndex = idx;
@@ -28,6 +29,15 @@
             localStorage.setItem("currentTitle", title);
             localStorage.setItem("isPaused", "false");
         });
+    });
+    const currentTimeEl = document.getElementById("current-time");
+    const totalTimeEl = document.getElementById("total-time");
+    player.addEventListener("loadedmetadata", () => {
+        let total = Math.floor(player.duration);
+        let minutes = Math.floor(total/60);
+        let seconds = total % 60;
+        if(seconds < 10) seconds = "0" + seconds;
+        totalTimeEl.textContent = minutes + ":" + seconds;
     });
     document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".track-card").forEach(card => {
@@ -51,7 +61,23 @@
             player.src = savedTrack;
             nowPlaying.textContent = savedTitle;
             player.addEventListener("ended", ()=> {
+                if(repeatMode === 2){
+                    player.currentTime = 0;
+                    player.play();
+                    return
+                }
                 currentIndex++;
+                if (currentIndex >=trackSources.length){
+                    if(repeatMode === 1){
+                        currentIndex = 0;
+                    } else {
+                        return;
+                    }
+                }
+                player.src = trackSources[currentIndex];
+                nowPlaying.textContent =
+                    trackCards[currentIndex].querySelector(".track-title").textContent;
+                player.play();
                 if (currentIndex >= trackSources.length) currentIndex = 0;
                 highlightCurrentTrack();
                 player.src = trackSources[currentIndex];
@@ -69,7 +95,51 @@
             }, {once: true});
         };
     });
-
+let repeatMode = 0;
+const repeatBtn = document.getElementById("repeat");
+repeatBtn.addEventListener("click", () => {
+    repeatMode++;
+    if(repeatMode > 2){
+        repeatMode = 0;
+    }
+    updateRepeatIcon();
+});
+function updateRepeatIcon(){
+    if(repeatMode === 0){
+        repeatBtn.textContent = "⤵";
+    }
+    if(repeatMode === 1){
+        repeatBtn.textContent = "↶";
+    }
+    if(repeatMode === 2){
+        repeatBtn.textContent = "⟲";
+    }
+}
+const playPauseBtn = document.getElementById("play-pause");
+playPauseBtn.onclick = () => {
+    if (player.paused) {
+        player.play();
+        playPauseBtn.textContent = "⏸︎";
+    } else {
+        player.pause();
+        playPauseBtn.textContent = "▶︎";
+    }
+};
+const progressBar = document.getElementById("progress-bar");
+player.addEventListener("timeupdate", () => {
+    let current = Math.floor(player.currentTime);
+    let minutes = Math.floor(current / 60);
+    let seconds = current % 60;
+    if (seconds < 10) seconds="0" + seconds;
+    currentTimeEl.textContent = minutes +":" + seconds;
+    const percent = (player.currentTime / player.duration) * 100;
+    progressBar.value = percent;
+    progressBar.style.background = `linear-gradient(to right, var(--color-main) ${percent}%, var(--color-dark) ${percent}%)`;
+});
+progressBar.addEventListener("input", () => {
+    const time = (progressBar.value / 100) * player.duration;
+    player.currentTime = time;
+});
     document.getElementById("next").onclick = () => {
         currentIndex++;
         if(currentIndex >= trackSources.length) currentIndex = 0;
@@ -116,7 +186,7 @@
                 totalDuration += audio.duration;
                 const minutes = Math.floor(totalDuration / 60);
                 const seconds = Math.floor(totalDuration % 60).toString().padStart(2, '0');
-                albumInfo.textContent = `${trackCards.length} треков - ${minutes}:${seconds} минут`;
+                albumInfo.textContent = `${trackCards.length} треков - ${minutes} мин. ${seconds} сек.`;
             });
         });
     });

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Моднейший Завет Ч.1</title>
+</head>
+<body class="album_vhod">
+    <h1>Вход</h1>
+    <a href="linnik.html" class="back-btn">↢ Назад</a>
+    <div class="album-header">
+        <img src="вход.jpg" class="album-cover">
+        <div class="album-info">
+            <h3>Линник</h3>
+            <h4>Вход</h4>
+            <p>10 треков - 28 минут</p>
+        </div>
+    </div>
+<section class="tracks">
+    <div class="track-wrapper">
+    <div class="track-card" data-index="0">
+        <img src="вход.jpg" class="track-thumb">
+        <span class="track-info">
+            <span class="track-title">(861) Атлантида</span>
+        </span>
+        <button class="play-btn">▷ Слушать</button>
+        <span class="track-duration">0:00</span>
+        <audio preload="metadata">
+            <source src="https://res.cloudinary.com/ddfknukky/video/upload/v1773628737/1_vhod_t9jrsg.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    </div>
+<div class="track-wrapper">
+    <div class="track-card" data-index="1">
+        <img src="вход.jpg" class="track-thumb">
+        <span class="track-info">
+            <span class="track-title">Mantra V2.0</span>
+        </span>
+        <button class="play-btn">▷ Слушать</button>
+        <span class="track-duration">0:00</span>
+        <audio preload="metadata">
+            <source src="https://res.cloudinary.com/ddfknukky/video/upload/v1773628752/2_vhod_yplg3n.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+</div>
+<div class="track-wrapper">
+    <div class="track-card" data-index="2">
+        <img src="вход.jpg" class="track-thumb">
+        <span class="track-info">
+            <span class="track-title">Таблетки</span>
+        </span>
+        <button class="play-btn">▷ Слушать</button>
+        <span class="track-duration">0:00</span>
+        <audio preload="metadata">
+            <source src="https://res.cloudinary.com/ddfknukky/video/upload/v1773628751/3_vhod_hqnsgh.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+ </div>  
+ <div class="track-wrapper">
+    <div class="track-card"  data-index="3">
+        <img src="вход.jpg" class="track-thumb">
+        <span class="track-info">
+            <span class="track-title">Не звони</span>
+        </span>
+        <button class="play-btn">▷ Слушать</button>
+        <span class="track-duration">0:00</span>
+        <audio preload="metadata">
+            <source src="https://res.cloudinary.com/ddfknukky/video/upload/v1773628757/4_vhod_smhdfk.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+</div>
+<div class="track-wrapper">
+    <div class="track-card" data-index="4">
+        <img src="вход.jpg" class="track-thumb">
+        <span class="track-info">
+            <span class="track-title">Chill</span>
+        </span>
+        <button class="play-btn">▷ Слушать</button>
+        <span class="track-duration">0:00</span>
+        <audio preload="metadata">
+            <source src="https://res.cloudinary.com/ddfknukky/video/upload/v1773628728/5_vhod_u2icgp.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    </div> 
+</section>
+<section class="intro">
+            <h2>Сайт создан в учебных и демонстративных целях</h2>
+        </section>
+    <footer>
+        <p>© alyametery UCL 2026</p>
+    </footer>
+    <div class="ballz">
+        <svg width="400" height="400" viewBox="0 0 200 200">
+            <defs>
+                <path id="circlePath" d="M 100, 100 m -75, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0"/>
+            </defs>
+            <text font-size="33" fill="#ccc">
+                <textPath href="#circlePath" startOffset="50%" text-anchor="middle">
+                    alyametery UCL - alyametery UCL -
+                </textPath>
+            </text>
+        </svg>
+    </div>
+<div class="player-ui">
+    <div class="player-info">
+        <span class="player-label">Сейчас играет:</span>
+        <span id="now-playing">Родной, ничего не играет</span>
+    </div>
+    <div class="progress-wrapper">
+        <span id="current-time">0:00</span>
+        <input type="range" id="progress-bar" value="0" min="0" max="100" step="0.01">
+        <span id="total-time">0:00</span>
+    </div>
+        <div class="player-controls">
+            <button id="prev">⏮︎</button>
+            <button id="play-pause">▶︎</button>
+            <button id="next">⏭︎</button>
+            <button id="repeat" class="repeat-type">⤵</button>
+        </div>
+        <audio id="main-audio"></audio>
+</div>
+<script src="player.js"></script>
+</body>
+</html>

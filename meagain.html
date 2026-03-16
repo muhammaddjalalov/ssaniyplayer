@@ -22,7 +22,7 @@
     <div class="track-card" data-index="0">
         <img src="meagain.jpg" class="track-thumb">
         <span class="track-info">
-            <span class="track-title">кто такой Гоблин?</span>
+            <span class="track-title">go go Goblin</span>
         </span>
         <button class="play-btn">▷ Слушать</button>
         <span class="track-duration">0:00</span>
@@ -35,7 +35,7 @@
     <div class="track-card" data-index="1">
         <img src="meagain.jpg" class="track-thumb">
         <span class="track-info">
-            <span class="track-title">go go Goblin</span>
+            <span class="track-title">не подхожу</span>
         </span>
         <button class="play-btn">▷ Слушать</button>
         <span class="track-duration">0:00</span>
@@ -48,7 +48,7 @@
     <div class="track-card" data-index="2">
         <img src="meagain.jpg" class="track-thumb">
         <span class="track-info">
-            <span class="track-title">не подхожу</span>
+            <span class="track-title">woo</span>
         </span>
         <button class="play-btn">▷ Слушать</button>
         <span class="track-duration">0:00</span>
@@ -61,7 +61,7 @@
     <div class="track-card"  data-index="3">
         <img src="meagain.jpg" class="track-thumb">
         <span class="track-info">
-            <span class="track-title">войслияние</span>
+            <span class="track-title">wow</span>
         </span>
         <button class="play-btn">▷ Слушать</button>
         <span class="track-duration">0:00</span>
@@ -74,7 +74,7 @@
     <div class="track-card" data-index="4">
         <img src="meagain.jpg" class="track-thumb">
         <span class="track-info">
-            <span class="track-title">15 Алямов</span>
+            <span class="track-title">no vein key</span>
         </span>
         <button class="play-btn">▷ Слушать</button>
         <span class="track-duration">0:00</span>
@@ -126,7 +126,7 @@
     <div class="track-card" data-index="8">
         <img src="meagain.jpg" class="track-thumb">
         <span class="track-info">
-            <span class="track-title">viva la Alyam</span>
+            <span class="track-title">Vladimir Putin</span>
         </span>
         <button class="play-btn">▷ Слушать</button>
         <span class="track-duration">0:00</span>
@@ -139,7 +139,7 @@
     <div class="track-card" data-index="9">
         <img src="meagain.jpg" class="track-thumb">
         <span class="track-info">
-            <span class="track-title">дорогие слова</span>
+            <span class="track-title">viva la Alyam, viva la Voz</span>
         </span>
         <button class="play-btn">▷ Слушать</button>
         <span class="track-duration">0:00</span>
@@ -149,10 +149,10 @@
     </div>
     </div>
     <div class="track-wrapper">
-    <div class="track-card" data-index="9">
+    <div class="track-card" data-index="10">
         <img src="meagain.jpg" class="track-thumb">
         <span class="track-info">
-            <span class="track-title">вечерний LA (on the way to ee'e)</span>
+            <span class="track-title">вечерний LA</span>
         </span>
         <button class="play-btn">▷ Слушать</button>
         <span class="track-duration">0:00</span>
@@ -180,16 +180,23 @@
             </text>
         </svg>
     </div>
-<div class="global-player">
-    <div class="player-controls">
-        <button id="prev">◁</button>
-        <button id="next">▷</button>
-    </div>
+<div class="player-ui">
     <div class="player-info">
         <span class="player-label">Сейчас играет:</span>
-        <span id="now-playing">Ничего</span>
+        <span id="now-playing">Родной, ничего не играет</span>
     </div>
-    <audio id="main-audio" controls></audio>
+    <div class="progress-wrapper">
+        <span id="current-time">0:00</span>
+        <input type="range" id="progress-bar" value="0" min="0" max="100" step="0.01">
+        <span id="total-time">0:00</span>
+    </div>
+        <div class="player-controls">
+            <button id="prev">⏮︎</button>
+            <button id="play-pause">▶︎</button>
+            <button id="next">⏭︎</button>
+            <button id="repeat" class="repeat-type">⤵</button>
+        </div>
+        <audio id="main-audio"></audio>
 </div>
 <script src="player.js"></script>
 </body>

@@ -16,10 +16,20 @@
             <div class="photo-wrapper">
             <a href="album_10-13.html" class="photo">
                 <div class="photo-inner">
-                <img src="Глеб Голубин.jpg" alt="Обложка_10-13">
+                <img src="10-13.jpg" alt="Обложка_10-13">
                 </div>
                 <div class="album-name">
                     <span class="title">10:13</span>
+                </div>
+            </a>
+            </div>
+            <div class="photo-wrapper">
+            <a href="pravilo.html" class="photo">
+                <div class="photo-inner">
+                <img src="правило.jpg" alt="Обложка_10-13">
+                </div>
+                <div class="album-name">
+                    <span class="title">Правило</span>
                 </div>
             </a>
             </div>
@@ -43,16 +53,23 @@
             </text>
         </svg>
     </div>
-    <div class="global-player">
-    <div class="player-controls">
-        <button id="prev">◁</button>
-        <button id="next">▷</button>
-    </div>
+<div class="player-ui">
     <div class="player-info">
         <span class="player-label">Сейчас играет:</span>
-        <span id="now-playing">Ничего</span>
+        <span id="now-playing">Родной, ничего не играет</span>
     </div>
-    <audio id="main-audio" controls></audio>
+    <div class="progress-wrapper">
+        <span id="current-time">0:00</span>
+        <input type="range" id="progress-bar" value="0" min="0" max="100" step="0.01">
+        <span id="total-time">0:00</span>
+    </div>
+        <div class="player-controls">
+            <button id="prev">⏮︎</button>
+            <button id="play-pause">▶︎</button>
+            <button id="next">⏭︎</button>
+            <button id="repeat" class="repeat-type">⤵</button>
+        </div>
+        <audio id="main-audio"></audio>
 </div>
 <script src="player.js"></script>
 </body>
